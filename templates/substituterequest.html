@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SUBSTITUTE REQUESTS</title>
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+    <link rel="stylesheet" type="text/css" href="/static/table.css"
+    <script src="/static/jquery.min.js"></script>
+    
+  </head>
+  <body>
+    <nav>
+        <ul>
+            <li><a  href="/">LOGOUT</a></li>
+            <li><a href="substituterequestpage" class="active">SUBSTITUTE REQUESTS</a></li>
+            <li><a href="substitutestatuspage"  >SUBSTITUTE STATUS</a></li>
+            <li><a href="reqsubstitutepage"  >REQUEST SUBSTITUTE</a></li>
+            <li><a href="tviewtimetablepage" >VIEW TIME TABLE</a></li>
+            
+            
+          </ul>
+    </nav>
+    
+<br>
+
+  <center>
+    <div class="flashes">
+    
+        {% for message in get_flashed_messages() %}
+          {{ message }}
+        {% endfor %}
+    
+      </div>
+    <h1>SUBSTITUTE REQUEST LIST</h1>
+<table id="mytable">
+    <thead>
+        <tr>
+           
+            <th>REQUESTED TEACHER</th>
+            <th>ACTUAL SUBJECT</th>
+            <th>SUBSTITUTE DATE</th>
+            <th>TIME</th>
+            <th>STATUS</th>
+            <th>ACTION 1</th>
+            <th>ACTION 2</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        {% for r in res %}
+        <tr>
+            <td>{{ r[8] }}</td>
+            <td>{{ r[3] }}</td>
+            <td>{{ r[4] }}</td>
+            <td>{{ r[5] }}</td>
+            <td>{{ r[6] }}</td>
+            {%if r[6]=='Pending'%}
+            <td><a href="acceptrejsubs?id={{ r[0] }}&status=Accepted" class="del">ACCEPT</a></td>
+            <td><a href="acceptrejsubs?id={{ r[0] }}&status=Rejected" class="del">REJECT</a></td>
+            {%else%}
+            <td>{{ r[6] }}</td>
+            <td>{{ r[6] }}</td>
+            {%endif%}
+            
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+</center>
+  </body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TEACHERS LIST</title>
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+    <link rel="stylesheet" type="text/css" href="/static/table.css"
+    <script src="/static/jquery.min.js"></script>
+    
+  </head>
+  <body>
+    <nav>
+        <ul>
+            <li><a  href="/">LOGOUT</a></li>
+            <li><a href="aviewtimetablepage"  class="active">VIEW TIME TABLE</a></li>
+            <li><a href="generateseatingpage" >GENERATE SEATING ARRANGEMENT</a></li>
+            <li><a href="gentpage" >GENERATE TIME TABLE</a></li>
+            <li><a  href="viewteacherspage">VIEW TEACHERS</a></li>
+            <li><a  href="addsubjectpage" >MAP TEACHER & SUBJECT</a></li>
+            
+          </ul>
+    </nav>
+    
+<br>
+
+  <center>
+    <div class="flashes">
+    
+        {% for message in get_flashed_messages() %}
+          {{ message }}
+        {% endfor %}
+    
+      </div>
+   
+    <h1>Time Table</h1>
+    <div>
+      {% if table %}
+          <!-- Display the HTML table generated from the DataFrame -->
+          {{ table | safe }}
+      {% else %}
+          <p>Time table not generated.</p>
+      {% endif %}
+  </div>
+</center>
+  </body>
+</html>
