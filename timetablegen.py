@@ -66,7 +66,8 @@ def generate_timetable(subjects, teachers_mapping, num_weeks):
     for week in range(num_weeks):
         for day in days:
             current_time = start_time
-
+            
+            random.shuffle(subjects)
             for subject in subjects:
                 teacher = teachers_mapping[subject]
 
