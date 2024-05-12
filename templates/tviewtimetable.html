@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TIME TABLE</title>
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+    <link rel="stylesheet" type="text/css" href="/static/table.css"
+    <script src="/static/jquery.min.js"></script>
+    
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a  href="/">LOGOUT</a></li>
+        <li><a href="substituterequestpage" >SUBSTITUTE REQUESTS</a></li>
+        <li><a href="substitutestatuspage" >SUBSTITUTE STATUS</a></li>
+        <li><a href="reqsubstitutepage"  >REQUEST SUBSTITUTE</a></li>
+        <li><a href="tviewtimetablepage"  class="active">VIEW TIME TABLE</a></li>
+        
+        
+      </ul>
+    </nav>
+    
+<br>
+
+  <center>
+    <div class="flashes">
+    
+        {% for message in get_flashed_messages() %}
+          {{ message }}
+        {% endfor %}
+    
+      </div>
+   
+    <h1>Time Table</h1>
+    <div>
+      {% if table %}
+          <!-- Display the HTML table generated from the DataFrame -->
+          {{ table | safe }}
+      {% else %}
+          <p>Time table not generated.</p>
+      {% endif %}
+  </div>
+</center>
+  </body>
+</html>

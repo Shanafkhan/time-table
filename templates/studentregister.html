@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Register Page</title>
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+    <style>
+      body{
+      
+      background-image: url("/static/background.jpg") ;
+      background-size: 100%;
+      background-repeat: no-repeat;
+      background-position-y: 40px;
+      
+      }
+          </style>
+  </head>
+  <body >
+    <nav>
+      <ul>
+       
+        <li><a href="/">HOME</a></li>
+        <li><a  href="loginpage">LOGIN</a></li>
+        <li><a  href="studentregisterpage" class="active">STUDENT REGISTER</a></li>
+  
+       
+      </ul>
+    </nav>
+<br>
+
+    <div class="form">
+      <h2>STUDENT REGISTERATION</h2>
+      <div class="flashes">
+        {% for message in get_flashed_messages() %}
+          {{ message }}
+        {% endfor %}
+      </div>
+      <form action="studentregister" method="POST">
+
+
+        <label for="name">NAME:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">EMAIL:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="phone">PHONE:</label>
+        <input type="number" id="phone" name="phone" onchange="validatephno()" required>
+
+        <label for="gender">GENDER:</label>
+        <select name="gender">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select>
+
+        <label for="address">ADDRESS:</label>
+       <textarea rows="2" cols="15" name="address" required></textarea>
+
+       <label for="usn">USN NUMBER:</label>
+       <input type="text" id="usn" name="usn" required>
+
+       <label for="branch">BRANCH:</label>
+       <select name="branch">
+        <option value="COMPUTER SCIENCE">COMPUTER SCIENCE</option>
+        <option value="INFORMATION SCIENCE">INFORMATION SCIENCE</option>
+        <option value="ELECTRONICS AND COMMUNICATION">ELECTRONICS AND COMMUNICATION</option>
+       </select>
+
+       <label for="year">YEAR:</label>
+      <select name="year">
+        <option value="1styear">1ST YEAR</option>
+        <option value="2ndyear">2ND YEAR</option>
+        <option value="3rdyear">3RD YEAR</option>
+        <option value="4thyear">4TH YEAR</option>
+      </select>
+
+      
+        <label for="password">PASSWORD:</label>
+        <input type="password" id="password" name="password" required>
+        
+        <input type="submit" value="REGISTER">
+      </form>
+    </div>
+    <br><br><br>
+
+    <script>
+      function validatephno(){
+        var phno = document.getElementById("phone").value;
+        var phnolen = phno.length;
+        if(phnolen!=10){
+      alert("Invalid phone number");
+      document.getElementById("phone").value="";
+        }
+      }
+
+     
+      
+      </script>
+  </body>
+</html>

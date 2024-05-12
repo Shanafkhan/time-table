@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ADD SUBJECT</title>
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+    <style>
+      body{
+      
+      background-image: url("/static/background.jpg") ;
+      background-size: 100%;
+      background-repeat: no-repeat;
+      background-position-y: 40px;
+      
+      }
+          </style>
+  </head>
+  <body >
+    <nav>
+      <ul>
+        <li><a  href="/">LOGOUT</a></li>
+        <li><a href="teacherregisterpage" >ADD TEACHER</a></li>
+        <li><a href="aviewtimetablepage" >VIEW TIME TABLE</a></li>
+        <li><a href="generateseatingpage" >GENERATE SEATING ARRANGEMENT</a></li>
+        <li><a href="gentpage" >GENERATE TIME TABLE</a></li>
+        <li><a  href="viewteacherspage">VIEW TEACHERS</a></li>
+        <li><a  href="addsubjectpage"  class="active">MAP TEACHER & SUBJECT</a></li>
+        
+      </ul>
+    </nav>
+<br><br><br><br><br><br>
+
+    <div class="form">
+      <h2>MAP TEACHER AND SUBJECT</h2>
+      <div class="flashes">
+        {% for message in get_flashed_messages() %}
+          {{ message }}
+        {% endfor %}
+      </div>
+      <form action="addsubject" method="POST">
+        <label for="teacher">TEACHER:</label>
+        <select name="tid">
+        {% for r in res %}
+          <option value="{{r[0]}}">NAME :{{r[1]}} Email:{{r[2]}}</option>
+          {%endfor%}
+      </select>
+
+        <label for="sname">SUBJECT:</label>
+        <input type="text" id="sname" name="sname" required>
+
+        
+        <input type="submit" value="SAVE">
+      </form>
+    </div>
+  </body>
+</html>

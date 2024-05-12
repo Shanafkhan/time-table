@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>GENERATE SEATING ARRANGEMENT</title>
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+    <style>
+      body{
+      
+      background-image: url("/static/background.jpg") ;
+      background-size: 100%;
+      background-repeat: no-repeat;
+      background-position-y: 40px;
+      
+      }
+          </style>
+  </head>
+  <body >
+    <nav>
+      <ul>
+        <li><a  href="/">LOGOUT</a></li>
+        <li><a href="aviewtimetablepage" >VIEW TIME TABLE</a></li>
+        <li><a href="generateseatingpage" class="active">GENERATE SEATING ARRANGEMENT</a></li>
+        <li><a href="gentpage" >GENERATE TIME TABLE</a></li>
+        <li><a  href="viewteacherspage">VIEW TEACHERS</a></li>
+        <li><a  href="addsubjectpage"  >MAP TEACHER & SUBJECT</a></li>
+        
+      </ul>
+    </nav>
+<br><br>
+
+    <div class="form">
+      <h2>GENERATE SEATING ARRANGEMENT</h2>
+      <div class="flashes">
+        {% for message in get_flashed_messages() %}
+          {{ message }}
+        {% endfor %}
+      </div>
+      <form action="generateseating" method="POST">
+        <label for="year">YEAR:</label>
+      <select name="year">
+        <option value="1styear">1ST YEAR</option>
+        <option value="2ndyear">2ND YEAR</option>
+        <option value="3rdyear">3RD YEAR</option>
+        <option value="4thyear">4TH YEAR</option>
+      </select>
+
+        <label for="branch1">COMBINATION BRANCH 1:</label>
+       <select name="branch1" id="branch1">
+        <option value="COMPUTER SCIENCE">COMPUTER SCIENCE</option>
+        <option value="INFORMATION SCIENCE">INFORMATION SCIENCE</option>
+        <option value="ELECTRONICS AND COMMUNICATION">ELECTRONICS AND COMMUNICATION</option>
+       </select>
+
+       <label for="branch2">COMBINATION BRANCH 2:</label>
+       <select name="branch2" id="branch2">
+        <option value="COMPUTER SCIENCE">COMPUTER SCIENCE</option>
+        <option value="INFORMATION SCIENCE">INFORMATION SCIENCE</option>
+        <option value="ELECTRONICS AND COMMUNICATION">ELECTRONICS AND COMMUNICATION</option>
+       </select>
+
+       <label for="blocks">NO OF BLOCKS:</label>
+       <input type="number" name="num_rooms" required>
+
+       <label for="benches">NO OF BENCHES PER ROOM:</label>
+       <input type="number" name="num_benches_per_room" required>
+
+        
+        <input type="submit" value="GENERATE">
+      </form>
+    </div>
+  </body>
+</html>

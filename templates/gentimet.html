@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Register Page</title>
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+    
+  </head>
+  <body >
+    <nav>
+      <ul>
+        <li><a  href="/">LOGOUT</a></li>
+        <li><a href="teacherregisterpage" >ADD TEACHER</a></li>
+        <li><a href="aviewtimetablepage" >VIEW TIME TABLE</a></li>
+        <li><a href="generateseatingpage" >GENERATE SEATING ARRANGEMENT</a></li>
+        <li><a href="gentpage" class="active">GENERATE TIME TABLE</a></li>
+        <li><a  href="viewteacherspage">VIEW TEACHERS</a></li>
+        <li><a  href="addsubjectpage"  >MAP TEACHER & SUBJECT</a></li>
+        
+      </ul>
+    </nav>
+<br><br><br>
+
+    <div class="form">
+      <h2>GENERATE TIME TABLE</h2>
+      <div class="flashes">
+        {% for message in get_flashed_messages() %}
+          {{ message }}
+        {% endfor %}
+      </div>
+      <form action="generate" method="POST">
+        
+        <label for="tname">START TIME:</label>
+        <input type="text" id="stime" name="stime" placeholder="10:00" required>
+
+        <label for="etime">END TIME:</label>
+        <input type="text" id="etime" name="etime" placeholder="17:00" required>
+
+        <label for="lch">LECTURE HOURS:</label>
+        <input type="text" id="lch" name="lch" placeholder="1" required>
+
+        <label for="lst">LUNCH START TIME:</label>
+        <input type="text" id="lst" name="lst" placeholder="13:00" required>
+
+        <label for="ld">LUNCH DURATION:</label>
+        <input type="text" id="ld" name="ld" placeholder="60" required>
+
+        
+        <input type="submit" value="SAVE">
+      </form>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SUBSTITUTE</title>
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+    <link rel="stylesheet" type="text/css" href="/static/table.css"
+   
+    
+  </head>
+  <body>
+    <nav>
+        <ul>
+            <li><a  href="/">LOGOUT</a></li>
+            <li><a href="substituterequestpage" >SUBSTITUTE REQUESTS</a></li>
+            <li><a href="substitutestatuspage" >SUBSTITUTE STATUS</a></li>
+            <li><a href="reqsubstitutepage"   class="active">REQUEST SUBSTITUTE</a></li>
+            <li><a href="tviewtimetablepage" >VIEW TIME TABLE</a></li>
+            
+            
+          </ul>
+    </nav>
+    
+<br><br><br><br><br>
+
+  <center>
+    <div class="flashes">
+    
+        {% for message in get_flashed_messages() %}
+          {{ message }}
+        {% endfor %}
+    
+      </div>
+      <div class="form">
+    <h1>Time Table</h1>
+    <form action="savesubstitute" method="POST">
+      <label for="teacher">SELECT TEACHER:</label>
+      <select name="tdetails">
+      {% for r in res %}
+        <option value="{{r[0]}},{{r[2]}},{{r[6]}}">NAME :{{r[1]}} SUBJECT:{{r[6]}}</option>
+        {%endfor%}
+    </select>
+
+      <label for="stime">SUBSTITUTION TIME:</label>
+      <input type="time" id="stime" name="stime" required>
+
+      <label for="sdate">SUBSTITUTION DATE:</label>
+      <input type="date" id="date" name="sdate" required>
+
+      
+      <input type="submit" value="SAVE">
+    </form>
+    </div>
+</center>
+<script src="/static/jquery.min.js"></script>
+<script>
+  $(function(){
+    var dtToday = new Date();
+    dtToday.setDate(dtToday.getDate() + 1);
+    var month = dtToday.getMonth() + 1;
+    var day = dtToday.getDate();
+    var year = dtToday.getFullYear();
+    if(month < 10)
+        month = '0' + month.toString();
+    if(day < 10)
+        day = '0' + day.toString();
+    
+    var maxDate = year + '-' + month + '-' + day;
+
+    $('#date').attr('min', maxDate);
+  });
+</script>
+  </body>
+</html>

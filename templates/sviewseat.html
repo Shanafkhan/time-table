@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SEATING</title>
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+    <link rel="stylesheet" type="text/css" href="/static/table.css"
+    <script src="/static/jquery.min.js"></script>
+    
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a  href="/">LOGOUT</a></li>
+        <li><a href="sviewsubstituteclass" >VIEW SUBSTITUTED CLASSES</a></li>
+        <li><a href="sviewseat"  class="active">VIEW MY SEATING ARRANGEMENT</a></li>
+        <li><a href="sviewtimetablepage"  >VIEW TIME TABLE</a></li>
+        
+        
+      </ul>
+    </nav>
+    
+<br>
+
+  <center>
+    <div class="flashes">
+    
+        {% for message in get_flashed_messages() %}
+          {{ message }}
+        {% endfor %}
+    
+      </div>
+   
+    <h1>YOUR SEATING</h1>
+    <table>
+        <tr>
+            <th>RoomNo</th>
+            <th>BenchNo</th>
+            <!-- Add more column headers as needed -->
+        </tr>
+        {% for row in rows %}
+        <tr>
+            <td>{{ row.RoomNo }}</td>
+            <td>{{ row.BenchNo }}</td>
+            <!-- Add more columns as needed -->
+        </tr>
+        {% endfor %}
+    </table>
+</center>
+  </body>
+</html>
