@@ -49,6 +49,49 @@ def generate_timetable(subjects, teachers_mapping, start_time, end_time, lecture
                     lecture_count += 1
 
     df = pd.DataFrame(timetable_data)
+    return df'''
+def generate_timetable(subjects, teachers_mapping, num_weeks):
+    days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+
+    start_time = pd.to_datetime('08:30')
+    end_time = pd.to_datetime('16:00')
+    tea_break_start = pd.to_datetime('10:30')
+    tea_break_end = pd.to_datetime('11:00')
+    lunch_start = pd.to_datetime('13:00')
+    lunch_end = pd.to_datetime('14:00')
+
+    timetable_data = {'Day': [], 'Time': [], 'Subject': [], 'Teacher': []}
+
+    for week in range(num_weeks):
+        for day in days:
+            current_time = start_time
+
+            for subject in subjects:
+                teacher = teachers_mapping[subject]
+
+                # Check if it's time for tea break or lunch break
+                if current_time.time() == tea_break_start.time():
+                    current_time = tea_break_end
+                    timetable_data['Day'].append(day)
+                    timetable_data['Time'].append(current_time.strftime('%H:%M'))
+                    timetable_data['Subject'].append('Tea Break')
+                    timetable_data['Teacher'].append('N/A')
+                elif current_time.time() == lunch_start.time():
+                    current_time = lunch_end
+                    timetable_data['Day'].append(day)
+                    timetable_data['Time'].append(current_time.strftime('%H:%M'))
+                    timetable_data['Subject'].append('Lunch Break')
+                    timetable_data['Teacher'].append('N/A')
+                else:
+                    # Schedule subject with teacher
+                    timetable_data['Day'].append(day)
+                    timetable_data['Time'].append(current_time.strftime('%H:%M'))
+                    timetable_data['Subject'].append(f'{subject}')
+                    timetable_data['Teacher'].append(teacher)
+
+                current_time += pd.Timedelta(hours=1)
+
+    df = pd.DataFrame(timetable_data)
     return df
 
 def pivot_timetable(timetable):
