@@ -8,7 +8,6 @@ import pandas as pd
 import os
 import mailing
 from datetime import datetime
-import pandas as pd
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret_key'
 
@@ -365,7 +364,7 @@ def generate():
     for row in res:
         subjects.append(row[6])
         teachers[row[6]]=row[1]
-    timetable = timetablegen.generate_timetable(subjects, teachers, num_weeks)
+    timetable = timetablegen.generate_timetable(subjects, teachers, stime, etime, int(lch), break_after_hours, break_duration, lst, int(ld), num_weeks)
     pivoted_timetable = timetablegen.pivot_timetable(timetable)
     timetablegen.export_to_excel(pivoted_timetable)
     message = Markup("<h3>Success! Time Table generated and exported to excelsheet</h3>")
@@ -473,8 +472,9 @@ def generate_seating(total_students, required_benches,branch1,branch2,year,num_b
     cursor.execute("insert into seating(filename,branch1,branch2,year) values('{}','{}','{}','{}')".format(filename,branch1,branch2,year))
     con.commit()
     con.close()
-
+    df.head(5)
     df.to_excel(filename, index=False)
+    print("exported")
             
 def search_usn_in_excel(usn,filename,branch):
     # Read Excel sheet

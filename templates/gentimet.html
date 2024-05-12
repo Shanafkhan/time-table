@@ -9,6 +9,7 @@
     <nav>
       <ul>
         <li><a  href="/">LOGOUT</a></li>
+        <li><a href="teacherregisterpage" >ADD TEACHER</a></li>
         <li><a href="aviewtimetablepage" >VIEW TIME TABLE</a></li>
         <li><a href="generateseatingpage" >GENERATE SEATING ARRANGEMENT</a></li>
         <li><a href="gentpage" class="active">GENERATE TIME TABLE</a></li>
@@ -29,19 +30,19 @@
       <form action="generate" method="POST">
         
         <label for="tname">START TIME:</label>
-        <input type="text" id="stime" name="stime" placeholder="10:00" >
+        <input type="text" id="stime" name="stime" placeholder="10:00" required>
 
         <label for="etime">END TIME:</label>
-        <input type="text" id="etime" name="etime" placeholder="17:00" >
+        <input type="text" id="etime" name="etime" placeholder="17:00" required>
 
         <label for="lch">LECTURE HOURS:</label>
-        <input type="text" id="lch" name="lch" placeholder="1" >
+        <input type="text" id="lch" name="lch" placeholder="1" required>
 
         <label for="lst">LUNCH START TIME:</label>
-        <input type="text" id="lst" name="lst" placeholder="13:00" >
+        <input type="text" id="lst" name="lst" placeholder="13:00" required>
 
         <label for="ld">LUNCH DURATION:</label>
-        <input type="text" id="ld" name="ld" placeholder="60" >
+        <input type="text" id="ld" name="ld" placeholder="60" required>
 
         
         <input type="submit" value="SAVE">
