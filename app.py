@@ -365,7 +365,7 @@ def generate():
     for row in res:
         subjects.append(row[6])
         teachers[row[6]]=row[1]
-    timetable = timetablegen.generate_timetable(subjects, teachers, stime, etime, int(lch), break_after_hours, break_duration, lst, int(ld), num_weeks)
+    timetable = timetablegen.generate_timetable(subjects, teachers, num_weeks)
     pivoted_timetable = timetablegen.pivot_timetable(timetable)
     timetablegen.export_to_excel(pivoted_timetable)
     message = Markup("<h3>Success! Time Table generated and exported to excelsheet</h3>")
